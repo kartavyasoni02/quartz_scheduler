@@ -1,0 +1,664 @@
+
+<div>
+	<section ng-controller="appController" class="test_cls">
+		
+						<div class="text-left">
+<h3>Configure Jobs:</h3>
+					<div id="panels">
+						<div class="panel-group" id="accordion"
+							ng-controller="schedularController">
+							<div class="panel panel-default" id="panel1">
+
+								<div class="panel-heading">
+									<h4 class="panel-title" style="color: #333333">
+										<strong> HMS </strong> <span
+											class="toggle glyphicon glyphicon-chevron-right pull-right"
+											data-toggle="collapse" data-target="#collapseOne"></span>
+									</h4>
+								</div>
+ 
+								<div id="collapseOne" class="panel-collapse collapse">
+									<div class="panel-body">
+
+										<div class="radio-inline">
+											<label><input type="radio" name="optradio"
+												ng-click="empty();hmsminutesload()" >Minutes</label>
+										</div>
+
+										<div class="radio-inline">
+											<label> <input type="radio" name="optradio"
+												ng-click="empty();hmshourlyload()">Hourly
+											</label>
+										</div>
+
+										<div class="radio-inline">
+											<label> <input type="radio" name="optradio"
+												ng-click="empty();hmsdailyload()">Daily
+											</label>
+										</div>
+
+										<div class="radio-inline">
+											<label> <input type="radio" name="optradio"
+												ng-click="empty();hmsweeklyload()">Weekly
+											</label>
+										</div>
+
+										<div class="radio-inline">
+											<label> <input type="radio" name="optradio"
+												ng-click="empty();hmsmonthlyload()">Monthly
+											</label>
+										</div>
+
+										<div class="radio-inline">
+											<label><input type="radio" name="optradio"
+												ng-click="empty();hmsyearlyload()">Yearly</label>
+										</div>
+										<br> <br>
+
+
+										<div ng-show="showhmsminute">
+
+											<table>
+												<tr>
+													<td>Minutes</td>
+													<td><input type="text" value=""
+														ng-model="hmsminuteInterval" class="form-control" /></td>
+												</tr>
+												<tr>
+													<td><input type="button" class="btn btn-primary"
+														id="btnclr" value="Save"
+														ng-click="schduleMinuteJob('HMS_JOB','minutes')" ng-disabled="!(!!hmsminuteInterval)" /></td>
+
+												</tr>
+
+											</table>
+										</div>
+
+
+										<div ng-show="showhmshourly">
+											<script type="text/javascript">
+													$('.clockpicker')
+															.clockpicker(
+																	{
+																		placement : 'bottom',
+																		align : 'left',
+																		autoclose : true
+																	});
+												</script>
+
+											<table>
+
+												<tr>
+													<td>Interval</td>
+													<td><input type="text" value=""
+														ng-model="hmshourInterval" class="form-control" /></td>
+												</tr>
+												<tr>
+													<td><input type="button" class="btn btn-primary"
+														value="Save" id="btnclr"
+														ng-click="schduleHourlyJob('HMS_JOB','hourly')" ng-disabled="!(!!hmshourInterval)"/></td>
+												</tr>
+											</table>
+										</div>
+
+										<div ng-show="showhmsdaily">
+											<table>
+												<tr>
+													<td>Start Time</td>
+													<td>
+														<div class="input-group clockpicker">
+															<input type="text" class="form-control"
+																ng-model="hmstimeslice" id="timeid2"> <span
+																class="input-group-addon"> <span
+																class="glyphicon glyphicon-time"></span>
+															</span>
+														</div>
+													</td>
+												</tr>
+											</table>
+											<script type="text/javascript">
+													$('.clockpicker')
+															.clockpicker(
+																	{
+																		placement : 'bottom',
+																		align : 'left',
+																		autoclose : true
+																	});
+												</script>
+
+
+											<input type="button" class="btn btn-primary" value="Save"
+												id="btnclr" ng-click="schduleDailyJob('HMS_JOB','daily')" ng-disabled="!(!!hmstimeslice)"/>
+										</div>
+
+										<div ng-show="showhmsmonthly">
+											<table>
+												<tr>
+													<td>Start Time</td>
+													<td>
+														<div class="input-group clockpicker">
+															<input type="text" class="form-control"
+																ng-model="hmstimeslice" id="timeid1"> <span
+																class="input-group-addon"> <span
+																class="glyphicon glyphicon-time"></span>
+															</span>
+														</div>
+													</td>
+
+													<td>Date</td>
+													<td><select class="form-control" ng-model="hmsdate">
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+															<option value="13">13</option>
+															<option value="14">14</option>
+															<option value="15">15</option>
+															<option value="16">16</option>
+															<option value="17">17</option>
+															<option value="18">18</option>
+															<option value="19">19</option>
+															<option value="20">20</option>
+															<option value="21">21</option>
+															<option value="22">22</option>
+															<option value="23">23</option>
+															<option value="24">24</option>
+															<option value="25">25</option>
+															<option value="26">26</option>
+															<option value="27">27</option>
+															<option value="28">28</option>
+															<option value="29">29</option>
+															<option value="30">30</option>
+															<option value="31">31</option>
+													</select></td>
+
+												</tr>
+											</table>
+											<script type="text/javascript">
+													$('.clockpicker')
+															.clockpicker(
+																	{
+																		placement : 'bottom',
+																		align : 'left',
+																		autoclose : true
+																	});
+												</script>
+
+
+											<input type="button" class="btn btn-primary" value="Save"
+												id="btnclr"
+												ng-click="schduleMonthlyJob('HMS_JOB','monthly')" ng-disabled="!(!!hmsdate)"/>
+
+										</div>
+
+
+										<div ng-show="showhmsweekly">
+											<table>
+												<tr>
+													<td>Start Time</td>
+													<td>
+														<div class="input-group clockpicker">
+															<input type="text" class="form-control"
+																ng-model="hmstimeslice" id="timeid1"> <span
+																class="input-group-addon"> <span
+																class="glyphicon glyphicon-time"></span>
+															</span>
+														</div>
+													</td>
+
+													<td>Days</td>
+													<td><select class="form-control" ng-model="hmsdays"
+														multiple="multiple">
+															<option value="MON">Monday</option>
+															<option value="TUE">Tuesday</option>
+															<option value="WED">Wednesday</option>
+															<option value="THU">Thursday</option>
+															<option value="FRI">Friday</option>
+															<option value="SAT">Saturday</option>
+															<option value="SUN">Sunday</option>
+													</select></td>
+
+												</tr>
+											</table>
+											<script type="text/javascript">
+													$('.clockpicker')
+															.clockpicker(
+																	{
+																		placement : 'bottom',
+																		align : 'left',
+																		autoclose : true
+																	});
+												</script>
+
+
+											<input type="button" class="btn btn-primary" value="Save"
+												id="btnclr" ng-click="schduleWeeklyJob('HMS_JOB','weekly')" ng-disabled="!(!!hmsdays&&!!hmstimeslice)"/>
+										</div>
+
+
+										<div ng-show="showhmsyearly">
+
+											<table>
+												<tr>
+													<td>Start Time</td>
+													<td>
+														<div class="input-group clockpicker">
+															<input type="text" class="form-control"
+																ng-model="hmstimeslice" id="timeid"> <span
+																class="input-group-addon"> <span
+																class="glyphicon glyphicon-time"></span>
+															</span>
+														</div>
+													</td>
+
+													<td>Date</td>
+													<td><select class="form-control" ng-model="hmsdate">
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+															<option value="13">13</option>
+															<option value="14">14</option>
+															<option value="15">15</option>
+															<option value="16">16</option>
+															<option value="17">17</option>
+															<option value="18">18</option>
+															<option value="19">19</option>
+															<option value="20">20</option>
+															<option value="21">21</option>
+															<option value="22">22</option>
+															<option value="23">23</option>
+															<option value="24">24</option>
+															<option value="25">25</option>
+															<option value="26">26</option>
+															<option value="27">27</option>
+															<option value="28">28</option>
+															<option value="29">29</option>
+															<option value="30">30</option>
+															<option value="31">31</option>
+													</select></td>
+													<td>Month</td>
+													<td><select class="form-control" ng-model="hmsmonth">
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+													</select></td>
+												</tr>
+											</table>
+											<script type="text/javascript">
+													$('.clockpicker')
+															.clockpicker(
+																	{
+																		placement : 'bottom',
+																		align : 'left',
+																		autoclose : true
+																	});
+												</script>
+
+
+											<input type="button" class="btn btn-primary" value="Save"
+												id="btnclr" ng-click="schduleYearlyJob('HMS_JOB','yearly')" ng-disabled="!(!!hmsmonth&&!!hmsdate&&!! hmstimeslice)" />
+
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panel2">
+								<div class="panel-heading">
+
+									<h4 class="panel-title" style="color: #333333">
+										<strong> SMS </strong> <span
+											class="toggle glyphicon glyphicon-chevron-right pull-right"
+											data-toggle="collapse" data-target="#collapseTwo"></span>
+									</h4>
+
+								</div>
+								<div id="collapseTwo" class="panel-collapse collapse">
+									<div class="panel-body">
+
+
+										<div class="radio-inline">
+											<label><input type="radio" name="optradio"
+												ng-click="empty();smsminutesload()">Minutes</label>
+										</div>
+
+										<div class="radio-inline">
+											<label> <input type="radio" name="optradio"
+												ng-click="empty();smshourlyload()">Hourly
+											</label>
+										</div>
+
+										<div class="radio-inline">
+											<label> <input type="radio" name="optradio"
+												ng-click="empty();smsdailyload()">Daily
+											</label>
+										</div>
+
+										<div class="radio-inline">
+											<label> <input type="radio" name="optradio"
+												ng-click="empty();smsweeklyload()">Weekly
+											</label>
+										</div>
+
+										<div class="radio-inline">
+											<label> <input type="radio" name="optradio"
+												ng-click="empty();smsmonthlyload()">Monthly
+											</label>
+										</div>
+
+										<div class="radio-inline">
+											<label><input type="radio" name="optradio"
+												ng-click="empty();smsyearlyload()">Yearly</label>
+										</div>
+										<br> <br>
+
+
+										<div ng-show="showsmsminute">
+											<table>
+												<tr>
+													<td>Minutes</td>
+													<td><input type="text" value=""
+														ng-model="smsminuteInterval" class="form-control" /></td>
+												</tr>
+												<tr>
+													<td><input type="button" class="btn btn-primary"
+														id="btnclr" value="Save"
+														ng-click="schduleMinuteJob('SMS_JOB','minutes')" ng-disabled="!(!!smsminuteInterval)"/></td>
+
+												</tr>
+
+											</table>
+										</div>
+
+
+										<div ng-show="showsmsweekly">
+											<table>
+												<tr>
+													<td>Start Time</td>
+													<td>
+														<div class="input-group clockpicker">
+															<input type="text" class="form-control"
+																ng-model="smstimeslice" id="timeid1"> <span
+																class="input-group-addon"> <span
+																class="glyphicon glyphicon-time"></span>
+															</span>
+														</div>
+													</td>
+
+													<td>Days</td>
+													<td><select class="form-control" ng-model="smsdays"
+														multiple="multiple">
+															<option value="MON">Monday</option>
+															<option value="TUE">Tuesday</option>
+															<option value="WED">Wednesday</option>
+															<option value="THU">Thursday</option>
+															<option value="FRI">Friday</option>
+															<option value="SAT">Saturday</option>
+															<option value="SUN">Sunday</option>
+													</select></td>
+
+												</tr>
+											</table>
+											<script type="text/javascript">
+													$('.clockpicker')
+															.clockpicker(
+																	{
+																		placement : 'bottom',
+																		align : 'left',
+																		autoclose : true
+																	});
+												</script>
+
+
+											<input type="button" class="btn btn-primary" value="Save"
+												id="btnclr" ng-click="schduleWeeklyJob('SMS_JOB','weekly')"ng-disabled="!(!!smsdays &&!!smstimeslice)" />
+										</div>
+
+
+										<div ng-show="showsmshourly">
+											<script type="text/javascript">
+													$('.clockpicker')
+															.clockpicker(
+																	{
+																		placement : 'bottom',
+																		align : 'left',
+																		autoclose : true
+																	});
+												</script>
+
+											<table>
+
+												<tr>
+													<td>Interval</td>
+													<td><input type="text" value=""
+														ng-model="smshourInterval" class="form-control" /></td>
+												</tr>
+												<tr>
+													<td><input type="button" class="btn btn-primary"
+														value="Save" id="btnclr"
+														ng-click="schduleHourlyJob('SMS_JOB','hourly')" ng-disabled="!(!!smshourInterval)" /></td>
+												</tr>
+												<!-- <tr>
+														<td><input type="button" class="btn btn-primary"
+															value="interval" id="btnclr" ng-click="postData5()" /></td>
+													</tr> -->
+											</table>
+										</div>
+
+										<div ng-show="showsmsdaily">
+											<table>
+												<tr>
+													<td>Start Time</td>
+													<td>
+														<div class="input-group clockpicker">
+															<input type="text" class="form-control"
+																ng-model="smstimeslice" id="timeid2"> <span
+																class="input-group-addon"> <span
+																class="glyphicon glyphicon-time"></span>
+															</span>
+														</div>
+													</td>
+
+
+
+												</tr>
+											</table>
+											<script type="text/javascript">
+													$('.clockpicker')
+															.clockpicker(
+																	{
+																		placement : 'bottom',
+																		align : 'left',
+																		autoclose : true
+																	});
+												</script>
+
+
+											<input type="button" class="btn btn-primary" value="Save"
+												id="btnclr" ng-click="schduleDailyJob('SMS_JOB','daily')" ng-disabled="!(!!smstimeslice)" />
+										</div>
+										<div ng-show="showsmsmonthly">
+											<table>
+												<tr>
+													<td>Start Time</td>
+													<td>
+														<div class="input-group clockpicker">
+															<input type="text" class="form-control"
+																ng-model="smstimeslice" id="timeid1"> <span
+																class="input-group-addon"> <span
+																class="glyphicon glyphicon-time"></span>
+															</span>
+														</div>
+													</td>
+ 
+													<td>Date</td>
+													<td><select class="form-control" ng-model="smsdate">
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+															<option value="13">13</option>
+															<option value="14">14</option>
+															<option value="15">15</option>
+															<option value="16">16</option>
+															<option value="17">17</option>
+															<option value="18">18</option>
+															<option value="19">19</option>
+															<option value="20">20</option>
+															<option value="21">21</option>
+															<option value="22">22</option>
+															<option value="23">23</option>
+															<option value="24">24</option>
+															<option value="25">25</option>
+															<option value="26">26</option>
+															<option value="27">27</option>
+															<option value="28">28</option>
+															<option value="29">29</option>
+															<option value="30">30</option>
+															<option value="31">31</option>
+													</select></td>
+
+												</tr>
+											</table>
+											<script type="text/javascript">
+													$('.clockpicker')
+															.clockpicker(
+																	{
+																		placement : 'bottom',
+																		align : 'left',
+																		autoclose : true
+																	});
+												</script>
+
+
+											<input type="button" class="btn btn-primary" value="Save"
+												id="btnclr"
+												ng-click="schduleMonthlyJob('SMS_JOB','monthly')" ng-disabled="!(!!smsdate&&!!smstimeslice)" /> 
+										</div>
+
+										<div ng-show="showsmsyearly">
+											<table>
+												<tr>
+													<td>Start Time</td>
+													<td>
+														<div class="input-group clockpicker">
+															<input type="text" class="form-control"
+																ng-model="smstimeslice" id="timeid"> <span
+																class="input-group-addon"> <span
+																class="glyphicon glyphicon-time"></span>
+															</span>
+														</div>
+													</td>
+
+													<td>Date</td>
+													<td><select class="form-control" ng-model="smsdate">
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+															<option value="13">13</option>
+															<option value="14">14</option>
+															<option value="15">15</option>
+															<option value="16">16</option>
+															<option value="17">17</option>
+															<option value="18">18</option>
+															<option value="19">19</option>
+															<option value="20">20</option>
+															<option value="21">21</option>
+															<option value="22">22</option>
+															<option value="23">23</option>
+															<option value="24">24</option>
+															<option value="25">25</option>
+															<option value="26">26</option>
+															<option value="27">27</option>
+															<option value="28">28</option>
+															<option value="29">29</option>
+															<option value="30">30</option>
+															<option value="31">31</option>
+													</select></td>
+													<td>Month</td>
+													<td><select class="form-control" ng-model="smsmonth">
+															<option value="01">01</option>
+															<option value="02">02</option>
+															<option value="03">03</option>
+															<option value="04">04</option>
+															<option value="05">05</option>
+															<option value="06">06</option>
+															<option value="07">07</option>
+															<option value="08">08</option>
+															<option value="09">09</option>
+															<option value="10">10</option>
+															<option value="11">11</option>
+															<option value="12">12</option>
+													</select></td>
+												</tr>
+											</table>
+											<script type="text/javascript">
+$('.clockpicker').clockpicker({
+    placement: 'bottom',
+    align: 'left',
+    donetext: 'Done'
+});
+</script>
+
+
+											<input type="button" class="btn btn-primary" value="Save"
+												id="btnclr" ng-click="schduleYearlyJob('SMS_JOB','yearly')" ng-disabled="!(!!smsdate&&!!smstimeslice&&!!smsmonth)"/>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		
+		<div ng-show="response_msg" class="alert alert-success">
+		<strong>Success!</strong> {{response_msg}}
+	</div>
+		
+		</section>
+</div>
+
